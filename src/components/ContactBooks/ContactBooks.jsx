@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // import store from 'redux/store';
-import ContactForm from 'components/ContactForm/ContactForm';
+import ContactForm from 'modules/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
 import { addContact, deleteContact } from 'redux/contacts/contacts-action';
