@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
-// import { Provider } from 'react-redux';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-// import store from 'redux/store';
 import ContactForm from 'modules/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
-import { addContact, deleteContact, setFilter } from 'redux/contacts/contacts-action';
+import { addContact, deleteContact } from 'redux/contacts/contacts-action';
+import { setFilter } from 'redux/filter/filter-actions';
 
 import css from './ContactBooks.module.css';
 
@@ -15,8 +14,7 @@ const ContactBooks = () => {
   //   () => JSON.parse(window.localStorage.getItem('contacts')) ?? []
   // );
   const contacts = useSelector(store => store.contacts);
-
-  const [filter, setFilter] = useState('');
+  const getFilter = useSelector(store => store.filter);
 
   const dispatch = useDispatch();
 
@@ -52,10 +50,12 @@ const ContactBooks = () => {
     dispatch(action);
   };
 
-  const changeFilter = event => setFilter(event.currentTarget.value);
+  const handleFilter = event => {
+    dispatch(setFilter(event.currentTarget.value));
+  };
 
   const getVisibleContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
+    const normalizedFilter = getFilter.toLowerCase();
 
     return contacts.filter(({ name }) => {
       return name.toLowerCase().includes(normalizedFilter);
@@ -73,7 +73,7 @@ const ContactBooks = () => {
       <div>
         <h2>Contacts</h2>
 
-        <Filter value={filter} onChange={changeFilter} />
+        <Filter value={getFilter} onChange={handleFilter} />
 
         <ContactList
           contacts={visibleContacts}
