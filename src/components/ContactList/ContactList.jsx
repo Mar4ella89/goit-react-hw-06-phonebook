@@ -3,7 +3,7 @@ import Notification from 'components/Notification/Notification';
 import css from './ContactList.module.css';
 import PropTypes from 'prop-types';
 
-const ContactList = ({ contacts, onDeleteContact }) => {
+const ContactList = ({ contacts, removeContact }) => {
   if (!Object.keys(contacts).length)
     return <Notification message={`There is no contact here...`} />;
   return (
@@ -14,7 +14,7 @@ const ContactList = ({ contacts, onDeleteContact }) => {
           <span className={css.contactNumber}>{number}</span>
           <button
             className={css.contactBtnClose}
-            onClick={() => onDeleteContact(id)}
+            onClick={() => removeContact(id)}
           >
             Delete
           </button>
@@ -25,7 +25,7 @@ const ContactList = ({ contacts, onDeleteContact }) => {
 };
 
 ContactList.ContactList = {
-  onDeleteContact: PropTypes.func.isRequired,
+  removeContact: PropTypes.func.isRequired,
   contacts: PropTypes.arrayOf(
     PropTypes.exact({
       id: PropTypes.string.isRequired,
