@@ -4,15 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import ContactForm from 'modules/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
-import { addContact, deleteContact } from 'redux/contacts/contacts-action';
-import { setFilter } from 'redux/filter/filter-actions';
+import { addContact, deleteContact } from 'redux/contacts/contact-slice';
+import { setFilter } from 'redux/filter/filter-slice';
 
 import css from './ContactBooks.module.css';
 
 const ContactBooks = () => {
-  // const [contacts, setContacts] = useState(
-  //   () => JSON.parse(window.localStorage.getItem('contacts')) ?? []
-  // );
+  
   const contacts = useSelector(store => store.contacts);
   const getFilter = useSelector(store => store.filter);
 
