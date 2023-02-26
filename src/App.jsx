@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux';
 import store from 'redux/store';
 
-import ContactBooks from './ContactBooks/ContactBooks';
+import ContactBooks from './components/ContactBooks/ContactBooks';
 
 export const App = () => {
   return (
