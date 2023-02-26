@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ContactForm from 'modules/ContactForm/ContactForm';
 import ContactList from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
-import { addContact, deleteContact } from 'redux/contacts/contacts-action';
+import { addContact, deleteContact, setFilter } from 'redux/contacts/contacts-action';
 
 import css from './ContactBooks.module.css';
 
