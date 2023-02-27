@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import ContactForm from 'modules/ContactForm/ContactForm';
@@ -10,15 +9,10 @@ import { setFilter } from 'redux/filter/filter-slice';
 import css from './ContactBooks.module.css';
 
 const ContactBooks = () => {
-  
   const contacts = useSelector(store => store.contacts);
   const getFilter = useSelector(store => store.filter);
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
 
   const isDublicate = (name, number) => {
     const normalizedName = name.toLowerCase();
